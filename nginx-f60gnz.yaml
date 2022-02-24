@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-f60gnz
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-f60gnz
+  namespace: my-nginx-f60gnz
+  labels:
+    name: nginx-f60gnz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-f60gnz
+  template:
+    metadata:
+      namespace: my-nginx-f60gnz
+      labels:
+        name: nginx-f60gnz
+    spec:
+      containers:
+      - name: nginx-f60gnz
+        image: nginx
+        ports:
+        - containerPort: 80
+
